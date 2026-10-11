@@ -57,7 +57,7 @@ export const sendMailInternal = async ({ to, subject, text, html }) => {
         body: JSON.stringify({
           sender: {
             name: process.env.EMAIL_FROM_NAME || 'Portal TKA SD',
-            email: process.env.BREVO_FROM_EMAIL || process.env.SMTP_USER || 'muhammadkhalid1608@gmail.com',
+            email: process.env.BREVO_FROM_EMAIL || process.env.SMTP_USER || 'noreply@tkasd.com',
           },
           to: [{ email: to }],
           subject,
