@@ -254,7 +254,7 @@ const Register = () => {
                   id="register-username"
                   name="username"
                   type="text"
-                  placeholder="contoh: khalid16 atau siswa_sd"
+                  placeholder="contoh: siswa123 atau siswa_sd"
                   value={formData.username}
                   onChange={handleChange}
                   error={errors.username}

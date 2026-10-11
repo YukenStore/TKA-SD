@@ -285,7 +285,7 @@ const ForgotPassword = () => {
                   id="reset-identifier"
                   name="identifier"
                   type="text"
-                  placeholder="contoh: khalid16 atau nama@gmail.com"
+                  placeholder="contoh: siswa123 atau nama@gmail.com"
                   value={identifier}
                   onChange={(e) => {
                     setIdentifier(e.target.value);

@@ -325,7 +325,7 @@ const Login = () => {
                   id="login-identifier"
                   name="identifier"
                   type="text"
-                  placeholder="contoh: khalid16 atau siswa@gmail.com"
+                  placeholder="contoh: Siswa123 atau siswa@gmail.com"
                   value={formData.identifier}
                   onChange={handleChange}
                   error={errors.identifier}
