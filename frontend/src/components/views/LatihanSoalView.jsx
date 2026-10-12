@@ -91,7 +91,9 @@ const LatihanSoalView = ({ isOpen, onClose }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/50 backdrop-blur-sm animate-fade-in overflow-y-auto">
-      <div className="bg-white border border-slate-200/90 rounded-2xl sm:rounded-3xl max-w-4xl w-full min-h-0 sm:min-h-[520px] max-h-[92vh] flex flex-col shadow-2xl text-slate-800 overflow-hidden relative">
+      <div className={`bg-white border-2 rounded-2xl sm:rounded-3xl max-w-4xl w-full min-h-0 sm:min-h-[520px] max-h-[92vh] flex flex-col shadow-2xl text-slate-800 overflow-hidden relative ${
+        selectedSubject === 'matematika' ? 'border-[#881337]' : selectedSubject === 'bahasa_indonesia' ? 'border-[#047857]' : 'border-slate-200/90'
+      }`}>
         {/* Glow ambient lembut */}
         <div className="absolute top-0 right-1/4 w-80 h-32 bg-emerald-500/5 blur-3xl pointer-events-none" />
 
@@ -263,7 +265,9 @@ const LatihanSoalView = ({ isOpen, onClose }) => {
               </div>
 
               {/* Soal Card */}
-              <div className="p-5 sm:p-6 rounded-2xl bg-slate-50 border border-slate-200 shadow-md">
+              <div className={`p-5 sm:p-6 rounded-2xl bg-slate-50 border-2 shadow-md ${
+                selectedSubject === 'matematika' ? 'border-[#881337]' : 'border-[#047857]'
+              }`}>
                 <h4 className="text-sm sm:text-base font-bold text-slate-900 leading-relaxed mb-5">
                   {selectedLevel.soal[currentQuestionIndex].pertanyaan}
                 </h4>
@@ -276,15 +280,21 @@ const LatihanSoalView = ({ isOpen, onClose }) => {
                       onClick={() => handleSelectOption(oIdx)}
                       className={`w-full p-3.5 rounded-xl text-left text-xs sm:text-sm font-medium border transition-all flex items-center justify-between ${
                         userAnswers[currentQuestionIndex] === oIdx
-                          ? 'bg-emerald-50 border-emerald-500 text-emerald-900 shadow-sm'
-                          : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-100'
+                          ? selectedSubject === 'matematika'
+                            ? 'bg-rose-50 border-2 border-[#881337] text-[#881337] shadow-sm font-semibold'
+                            : 'bg-emerald-50 border-2 border-[#047857] text-[#047857] shadow-sm font-semibold'
+                          : selectedSubject === 'matematika'
+                          ? 'bg-white border-slate-200 hover:border-[#881337]/50 text-slate-700 hover:bg-rose-50/30'
+                          : 'bg-white border-slate-200 hover:border-[#047857]/50 text-slate-700 hover:bg-emerald-50/30'
                       }`}
                     >
                       <span>{opt}</span>
                       <div
                         className={`w-6 h-6 rounded-full border flex items-center justify-center text-xs font-bold ${
                           userAnswers[currentQuestionIndex] === oIdx
-                            ? 'border-emerald-500 bg-emerald-600 text-white'
+                            ? selectedSubject === 'matematika'
+                              ? 'border-[#881337] bg-[#881337] text-white'
+                              : 'border-[#047857] bg-[#047857] text-white'
                             : 'border-slate-300 text-slate-400'
                         }`}
                       >
@@ -311,14 +321,22 @@ const LatihanSoalView = ({ isOpen, onClose }) => {
                   {currentQuestionIndex < selectedLevel.soal.length - 1 ? (
                     <button
                       onClick={() => setCurrentQuestionIndex((prev) => prev + 1)}
-                      className="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold transition-all shadow-md"
+                      className={`px-5 py-2 rounded-xl text-white text-xs font-bold transition-all shadow-md ${
+                        selectedSubject === 'matematika'
+                          ? 'bg-[#881337] hover:bg-[#700D2B]'
+                          : 'bg-[#047857] hover:bg-[#065F46]'
+                      }`}
                     >
                       Selanjutnya &rarr;
                     </button>
                   ) : (
                     <button
                       onClick={handleFinishQuiz}
-                      className="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-extrabold transition-all shadow-lg shadow-emerald-600/30 hover:scale-105 active:scale-95"
+                      className={`px-6 py-2.5 rounded-xl text-white text-xs font-extrabold transition-all shadow-lg hover:scale-105 active:scale-95 ${
+                        selectedSubject === 'matematika'
+                          ? 'bg-[#881337] hover:bg-[#700D2B] shadow-[#881337]/30'
+                          : 'bg-[#047857] hover:bg-[#065F46] shadow-emerald-600/30'
+                      }`}
                     >
                       Kumpulkan Latihan ✨
                     </button>
